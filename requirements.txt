@@ -1,0 +1,15 @@
+langchain==0.3.0
+langchain-chroma
+langchain-community==0.3.0
+langchain-openai==0.2.0
+langchain-text-splitters==0.3.0
+langgraph==0.2.20
+langfuse==2.45.0
+openai
+chromadb
+tiktoken
+python-dotenv
+pandas
+jupyter
+unstructured
+markdown
