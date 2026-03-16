@@ -8,7 +8,6 @@ ENV/
 chroma_db/
 
 # Datos crudos y temporales
-data/
 *.log
 
 # Variables de entorno (Seguridad)
