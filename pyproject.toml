@@ -7,9 +7,13 @@ requires-python = ">=3.12"
 dependencies = [
     "langchain>=1.2.12",
     "langchain-chroma>=1.1.0",
+    "langchain-openai>=0.1.0",
     "langchain-core>=1.2.19",
+    "langgraph>=0.0.26",
+    "langfuse>=2.0.0",
     "markdown>=3.10.2",
     "memory>=1.0.0",
     "pydantic>=2.12.5",
+    "python-dotenv>=1.0.1"
 ]
 
