@@ -1,10 +1,15 @@
 [project]
 name = "tourmaster-ai"
 version = "0.1.0"
-description = "Add your description here"
+description = "Production-grade multi-agent system for music tour management using LangGraph and Langfuse."
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "langchain>=1.2.12",
     "langchain-chroma>=1.1.0",
+    "langchain-core>=1.2.19",
     "markdown>=3.10.2",
+    "memory>=1.0.0",
+    "pydantic>=2.12.5",
 ]
+
