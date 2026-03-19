@@ -1,62 +1,50 @@
 import os
-import time
-from openai import OpenAI, APIConnectionError
+from openai import OpenAI
 from dotenv import load_dotenv
 
 load_dotenv()
-client = OpenAI()
+client = OpenAI() #      Asegúrate de tener OPENAI_API_KEY en tu .env
 
 DOMAINS = {
-    "booking": "Base de datos de bares y clubes de música en Córdoba, Rosario y Buenos Aires. Incluye nombres, géneros (Rock, Jazz, Indie, DJ), capacidad y contacto.",
-    "logistics": "Guía de logística para músicos: consumo de nafta (Partner/Kangoo), hoteles con cochera en Argentina y consejos de seguridad vial.",
-    "marketing": "Manual de marketing: cómo redactar Gacetillas de Prensa, estrategias de Instagram/TikTok para fechas y planes de promoción local.",
+    "booking": """
+        Base de datos de bares, clubes de música en vivo y centros culturales en Córdoba, Rosario y Buenos Aires. 
+        Incluye nombres de lugares, géneros musicales preferidos (Rock, Jazz, Indie, DJ sets), capacidad (público), 
+        información de contacto ficticia y si el lugar suele proveer sonido (backline).
+    """,
+    "logistics": """
+        Guía de logística para músicos. Incluye tablas de consumo promedio de combustible para vehículos comunes (Partner, Kangoo, Sprinter). 
+        Listado de hoteles y hostales en ciudades principales de Argentina que cuentan con cochera o estacionamiento seguro 
+        para vehículos con equipamiento. Consejos para estiba de instrumentos y seguridad en ruta.
+    """,
+    "marketing": """
+        Manual de marketing para artistas independientes. Cómo redactar una 'Gacetilla de Prensa' efectiva. 
+        Plantillas de mensajes para radios y prensa local. Estrategias de promoción en Instagram y TikTok 
+        específicamente para fechas de giras. Calendarios editoriales sugeridos para antes y después del show.
+    """
 }
 
-
 def generate_docs():
+    # Crear carpeta data si no existe
     if not os.path.exists("data"):
         os.makedirs("data")
 
     for folder, description in DOMAINS.items():
         path = f"data/{folder}_docs"
         os.makedirs(path, exist_ok=True)
-
-        for i in range(10):
-            file_path = f"{path}/doc_{i}.md"
-
-            # Si el archivo ya existe, lo saltamos para no gastar saldo
-            if os.path.exists(file_path):
-                continue
-
-            print(f"-> Generando {folder} - parte {i + 1}/10...")
-
-            success = False
-            retries = 3
-            while not success and retries > 0:
-                try:
-                    response = client.chat.completions.create(
-                        model="gpt-4o-mini",
-                        messages=[
-                            {
-                                "role": "user",
-                                "content": f"Actúa como experto en industria musical argentina. Escribe un documento técnico sobre: {description}. Parte {i + 1}/10. Formato Markdown.",
-                            }
-                        ],
-                    )
-                    with open(file_path, "w", encoding="utf-8") as f:
-                        f.write(response.choices[0].message.content)
-                    success = True
-                except APIConnectionError:
-                    print(
-                        f"   ⚠️ Error de conexión. Reintentando en 5 segundos... (Intentos restantes: {retries})"
-                    )
-                    time.sleep(5)
-                    retries -= 1
-                except Exception as e:
-                    print(f"   ❌ Error inesperado: {e}")
-                    break
-
+        print(f"-> Generando contenido para: {folder}...")
+        
+        # Generamos 10 archivos por dominio para asegurar variedad y volumen (chunks)
+        for i in range(10): 
+            response = client.chat.completions.create(
+                model="gpt-4o-mini",
+                messages=[{
+                    "role": "user", 
+                    "content": f"Actúa como un experto en la industria musical argentina. Escribe un documento técnico sobre: {description}. Parte {i+1}/10. Usa formato Markdown con títulos y tablas si es necesario."
+                }]
+            )
+            with open(f"{path}/doc_{i}.md", "w", encoding="utf-8") as f:
+                f.write(response.choices[0].message.content)
 
 if __name__ == "__main__":
     generate_docs()
-    print("\n✅ ¡Proceso finalizado con éxito!")
+    print("\n¡Listo! Carpetas creadas y documentos generados en /data.")
