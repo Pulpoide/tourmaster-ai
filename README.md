@@ -13,6 +13,8 @@ TourMaster AI is an intelligent, multi-agent orchestration system designed to au
 
 The project is structured as a modular, production-ready Python application. At the core is **LangGraph**, which maintains state across the conversation and routes tasks conditionally. 
 
+![Workflow Graph](./assets/workflow_graph.png)
+
 1. **The Orchestrator:** A semantic router utilizing Pydantic v2 structured outputs to classify user intent.
 2. **Domain Experts (Nodes):**
    - 📅 **Booking Agent:** Uses RAG to query local vector stores for venues, capacities, and technical specs.
@@ -32,18 +34,24 @@ The project is structured as a modular, production-ready Python application. At 
 ## 🛠️ Project Structure
 ```text
 tourmaster-ai/
-├── data/               # Markdown knowledge base
-├── src/                # Core Application Logic
-│   ├── config.py       # Env vars and Langfuse configuration
-│   ├── db.py           # ChromaDB initialization and vector caching
-│   ├── state.py        # LangGraph State definitions
-│   ├── tools.py        # Python tools (e.g., travel cost calculator)
-│   ├── agents.py       # RAG Chains and Tool Agents
-│   └── graph.py        # StateGraph construction
-├── tests/              # Evaluation suites
-│   └── test_router.py  # Semantic routing accuracy tests
-├── main.py             # CLI Entry Point
-└── pyproject.toml      # Dependency and build configuration
+├── assets/          
+├── data/
+├── src/
+│   ├── __init__.py
+│   ├── config.py           
+│   ├── graph.py            
+│   ├── agents/
+│   │   ├── __init__.py
+│   │   ├── agents.py       
+│   │   └── state.py
+│   ├── database/
+│   │   ├── __init__.py
+│   │   └── db.py           
+│   └── tools/
+│       ├── __init__.py
+│       └── tools.py        
+├── main.py                 
+└── .env.example
 ```
 
 ## 🚀 Installation & Setup
@@ -95,7 +103,7 @@ uv run python -m tests.test_router
 
 ## Author
 
-**Joaquín Olivero** ~ Software & AI Engineer
+**Joaquín Olivero** ~ Software Engineer
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/JoaquinOlivero)
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Pulpoide)
