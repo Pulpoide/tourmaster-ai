@@ -12,7 +12,7 @@
 
 ### Production-Grade Multi-Agent System for Music Tour Management
 
-TourMaster AI is an intelligent, multi-agent orchestration system designed to automate and optimize the complex logistics of music tour management. Moving beyond simple chatbots, this system leverages a **Directed Acyclic Graph (DAG)** architecture to route natural language queries to specialized AI agents, complete with internal quality assurance and full observability.
+Tourmaster AI is an intelligent, multi-agent orchestration system designed to automate and optimize the complex logistics of music tour management. Moving beyond simple chatbots, this system leverages a **Directed Acyclic Graph (DAG)** architecture to route natural language queries to specialized AI agents, complete with internal quality assurance and full observability.
 
 ## Architecture Overview
 
