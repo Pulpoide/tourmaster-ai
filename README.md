@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 # Tourmaster AI 
 <div align="center">
   <img src="assets/tourmasterai.png" width="700">
+=======
+# TourMaster AI 
+> **Production-Grade Multi-Agent System for Music Tour Management**
+>>>>>>> 7b6f353714eec56e1e9c18c7ab78d52f3faab5a3
 
 ![Python](https://img.shields.io/badge/Python-3.12%2B-blue?style=flat-square&logo=python)
 ![LangChain](https://img.shields.io/badge/LangChain-0.3-green?style=flat-square)
