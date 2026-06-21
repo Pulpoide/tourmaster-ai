@@ -2,7 +2,7 @@ import sys
 from src.graph import run_tourmaster_graph
 
 def chat_interactivo():
-    print("🎸 Bienvenido a TourMaster AI 🎸")
+    print("🎸 Bienvenido a Tourmaster AI 🎸")
     print("Escribe 'salir' para terminar.\n")
 
     while True:

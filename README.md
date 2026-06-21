@@ -1,5 +1,6 @@
-# 🎸 TourMaster AI 
-> **Production-Grade Multi-Agent System for Music Tour Management**
+# Tourmaster AI 
+<div align="center">
+  <img src="assets/tourmasterai.png" width="700">
 
 ![Python](https://img.shields.io/badge/Python-3.12%2B-blue?style=flat-square&logo=python)
 ![LangChain](https://img.shields.io/badge/LangChain-0.3-green?style=flat-square)
@@ -7,9 +8,13 @@
 ![ChromaDB](https://img.shields.io/badge/ChromaDB-VectorStore-purple?style=flat-square)
 ![Langfuse](https://img.shields.io/badge/Langfuse-Observability-red?style=flat-square)
 
+</div>
+
+### Production-Grade Multi-Agent System for Music Tour Management
+
 TourMaster AI is an intelligent, multi-agent orchestration system designed to automate and optimize the complex logistics of music tour management. Moving beyond simple chatbots, this system leverages a **Directed Acyclic Graph (DAG)** architecture to route natural language queries to specialized AI agents, complete with internal quality assurance and full observability.
 
-## 🧠 Architecture Overview
+## Architecture Overview
 
 The project is structured as a modular, production-ready Python application. At the core is **LangGraph**, which maintains state across the conversation and routes tasks conditionally. 
 
@@ -23,7 +28,7 @@ The project is structured as a modular, production-ready Python application. At 
    - 🌦️ **Weather Agent:** Uses external tool binding to fetch and format weather forecasts for outdoor events.
 3. **The Evaluator (QA):** Before any response reaches the user, an LLM-as-a-Judge evaluates the answer against the original query, scoring it (1-10) and providing reasoning.
 
-## ✨ Key Features
+## Key Features
 
 - **Stateful Multi-Agent Graph:** Built with LangGraph for scalable, predictable, and correctable AI workflows.
 - **Retrieval-Augmented Generation (RAG):** Powered by ChromaDB and OpenAI `text-embedding-3-small` for semantic search over proprietary Markdown documents.
@@ -31,7 +36,7 @@ The project is structured as a modular, production-ready Python application. At 
 - **Enterprise Observability:** Fully integrated with **Langfuse** for real-time tracing, latency monitoring, token cost calculation, and quality scoring.
 - **Modern Dependency Management:** Built and managed using `uv` with a fully configured `pyproject.toml` for deterministic environments and native CLI execution.
 
-## 🛠️ Project Structure
+## Project Structure
 ```text
 tourmaster-ai/
 ├── assets/          
@@ -54,7 +59,7 @@ tourmaster-ai/
 └── .env.example
 ```
 
-## 🚀 Installation & Setup
+## Installation & Setup
 
 This project uses `uv` for fast dependency management.
 
@@ -81,7 +86,7 @@ This project uses `uv` for fast dependency management.
    LANGFUSE_HOST=https://cloud.langfuse.com
    ```
 
-## 💻 CLI Usage
+## CLI Usage
 
 TourMaster AI operates as a native command-line tool. You can launch the interactive chat or pass direct queries.
 
@@ -93,7 +98,7 @@ uv run tourmaster
 uv run tourmaster -q "Listame 5 bares para ir a tocar Jazz en Córdoba"
 ```
 
-## 🧪 Evaluation & Testing
+## Evaluation & Testing
 
 To ensure the orchestrator's semantic routing remains highly accurate, a dedicated evaluation suite is provided:
 
@@ -103,7 +108,7 @@ uv run python -m tests.test_router
 
 ## Author
 
-**Joaquín Olivero** ~ Software Engineer
+**Joaquín Olivero** ~ Backend & AI Engineer
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/JoaquinOlivero)
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Pulpoide)
