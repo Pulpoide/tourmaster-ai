@@ -36,7 +36,7 @@ def get_or_create_vector_store(domain_name: str):
         vector_store.add_documents(documents=chunks)
         print(f"✅ Dominio '{domain_name}' indexado con {len(chunks)} fragmentos.\n")
     else:
-        print(f"⚡ Base de datos local cargada al instante para: {domain_name}")
+        print(f"[INFO] Base de datos local cargada al instante para: {domain_name}")
 
     return vector_store
 

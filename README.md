@@ -10,31 +10,31 @@
 
 </div>
 
-### Production-Grade Multi-Agent System for Music Tour Management
+### Multi-Agent System for Music Tour Management — Built with Production Practices
 
-Tourmaster AI is an intelligent, multi-agent orchestration system designed to automate and optimize the complex logistics of music tour management. Moving beyond simple chatbots, this system leverages a **Directed Acyclic Graph (DAG)** architecture to route natural language queries to specialized AI agents, complete with internal quality assurance and full observability.
+Tourmaster AI is a multi-agent orchestration system that automates logistics for music tour management in Argentina. Originally developed as a Jupyter Notebook proof-of-concept, it was refactored into a modular Python application using a **Directed Acyclic Graph (DAG)** architecture. The system routes natural language queries to specialized AI agents, applies an LLM-as-a-Judge quality gate, and traces every step with full observability.
 
 ## Architecture Overview
 
-The project is structured as a modular, production-ready Python application. At the core is **LangGraph**, which maintains state across the conversation and routes tasks conditionally. 
+The project follows a modular graph architecture powered by **LangGraph**, which maintains state across the conversation and routes tasks conditionally.
 
 ![Workflow Graph](./assets/workflow_graph.png)
 
-1. **The Orchestrator:** A semantic router utilizing Pydantic v2 structured outputs to classify user intent.
+1. **The Orchestrator:** A semantic router using Pydantic v2 structured outputs to classify user intent into one of four domains.
 2. **Domain Experts (Nodes):**
-   - 📅 **Booking Agent:** Uses RAG to query local vector stores for venues, capacities, and technical specs.
-   - 🚐 **Logistics Agent:** Combines RAG with **Tool Calling** (e.g., executing Python functions to calculate travel costs based on distance and fuel consumption).
-   - 📣 **Marketing Agent:** Generates press releases and social media copy grounded in internal documentation.
-   - 🌦️ **Weather Agent:** Uses external tool binding to fetch and format weather forecasts for outdoor events.
-3. **The Evaluator (QA):** Before any response reaches the user, an LLM-as-a-Judge evaluates the answer against the original query, scoring it (1-10) and providing reasoning.
+   - **Booking Agent:** Uses RAG to query a local vector store for venues, capacities, and technical specs.
+   - **Logistics Agent:** Combines RAG with **Tool Calling** -- executes Python functions to calculate travel costs based on distance and fuel consumption.
+   - **Marketing Agent:** Generates press releases and social media copy grounded in internal documentation.
+   - **Weather Agent:** Fetches live weather forecasts via OpenWeatherMap API for outdoor event planning.
+3. **The Evaluator (QA):** Before any response reaches the user, an LLM-as-a-Judge evaluates the answer against the original query, scoring it (1-10) with reasoning.
 
 ## Key Features
 
-- **Stateful Multi-Agent Graph:** Built with LangGraph for scalable, predictable, and correctable AI workflows.
-- **Retrieval-Augmented Generation (RAG):** Powered by ChromaDB and OpenAI `text-embedding-3-small` for semantic search over proprietary Markdown documents.
-- **Advanced Tool Calling:** Agents dynamically execute deterministic Python functions when math or external data is required.
-- **Enterprise Observability:** Fully integrated with **Langfuse** for real-time tracing, latency monitoring, token cost calculation, and quality scoring.
-- **Modern Dependency Management:** Built and managed using `uv` with a fully configured `pyproject.toml` for deterministic environments and native CLI execution.
+- **Stateful Multi-Agent Graph:** LangGraph orchestrates a DAG that routes queries through intent classification, domain-specific agents, and an evaluator — all within a shared conversation state.
+- **Retrieval-Augmented Generation (RAG):** ChromaDB vector store with OpenAI `text-embedding-3-small` enables semantic search over local Markdown documents covering venues, logistics, and marketing material.
+- **Tool Calling Agents:** Logistics and Weather agents execute deterministic Python functions — travel cost calculations and live OpenWeatherMap forecasts — grounded in real data rather than LLM hallucination.
+- **Observability with Langfuse:** End-to-end tracing, latency monitoring, token usage tracking, and automated quality scoring via Langfuse.
+- **Reproducible Environments:** Dependency management with `uv` + `pyproject.toml` for deterministic installs and a native CLI entry point.
 
 ## Project Structure
 ```text

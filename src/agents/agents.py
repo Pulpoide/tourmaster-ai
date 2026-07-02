@@ -160,7 +160,7 @@ def evaluator_node(state: AgentState):
                 name="answer-quality", value=evaluation.score, comment=evaluation.reason
             )
         except Exception as e:
-            print(f"⚠️ Error al enviar métrica a Langfuse: {e}")
+            print(f"[AVISO] Error al enviar metrica a Langfuse: {e}")
 
-    print(f"⚗️ Evaluación: {evaluation.score}/10 - {evaluation.reason}")
+    print(f"[EVAL] Evaluacion: {evaluation.score}/10 - {evaluation.reason}")
     return {"messages": [("ai", f"Calidad: {evaluation.score}/10")]}

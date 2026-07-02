@@ -41,3 +41,10 @@ wheels/
 .vscode/
 .idea/
 .ipynb_checkpoints/
+
+# AGENTS.md 
+AGENTS.md
+
+# CommandCode — configuraciones del asistente
+.commandcode/
+taste.md

@@ -45,7 +45,7 @@ workflow.add_edge("evaluator", END)
 
 app = workflow.compile()
 
-print("✅ Grafo de TourMaster compilado correctamente")
+print("[OK] Grafo de TourMaster compilado correctamente")
 
 
 def run_tourmaster_graph(query: str):

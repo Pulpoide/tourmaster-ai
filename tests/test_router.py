@@ -14,7 +14,7 @@ def run_tests():
         {"query": "Queremos hacer un festival y no sabemos si contactar a la municipalidad o a un bar, ¿qué sugieres?", "expected_intent": "booking"}
     ]
 
-    print("🚀 Iniciando Suite de Pruebas de TourMaster AI...\n")
+    print("[INICIO] Iniciando Suite de Pruebas de TourMaster AI...\n")
     aciertos = 0
 
     for i, test in enumerate(test_queries):
@@ -22,26 +22,26 @@ def run_tests():
         expected = test["expected_intent"].upper()
 
         print(f"--- Test #{i+1} ---")
-        print(f"🗣️ Usuario: {query}")
-        print(f"🎯 Intención Esperada: {expected}")
+        print(f"[USUARIO] Usuario: {query}")
+        print(f"[ESPERADO] Intencion Esperada: {expected}")
 
         try:
             estado_final = run_tourmaster_graph(query)
             experto_real = estado_final.get("expert_used", "DESCONOCIDO")
 
             if experto_real == expected:
-                print(f"✅ ¡MATCH! Enrutamiento impecable hacia {experto_real}.")
+                print(f"[OK] MATCH! Enrutamiento impecable hacia {experto_real}.")
                 aciertos += 1
             else:
-                print(f"⚠️ MISMATCH: El orquestador se confundió. Mandó a {experto_real}.")
+                print(f"[AVISO] MISMATCH: El orquestador se confundio. Mando a {experto_real}.")
 
         except Exception as e:
-            print(f"❌ Error en la ejecución: {e}")
+            print(f"[ERROR] Error en la ejecucion: {e}")
 
         print("\n" + "="*70 + "\n")
 
-    print(f"📊 RESULTADO FINAL: Precisión del Orquestador: {aciertos}/{len(test_queries)}")
-    print("✅ Revisa el dashboard de Langfuse para ver las trazas y las notas del Evaluador.")
+    print(f"[RESULTADO] RESULTADO FINAL: Precision del Orquestador: {aciertos}/{len(test_queries)}")
+    print("[OK] Revisa el dashboard de Langfuse para ver las trazas y las notas del Evaluador.")
 
 if __name__ == "__main__":
     run_tests()

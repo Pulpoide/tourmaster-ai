@@ -15,11 +15,11 @@ langfuse_handler = CallbackHandler(
 )
 
 if langfuse_handler.auth_check():
-    print("✅ Observabilidad: Langfuse conectado y listo para trazar.")
+    print("[OK] Observabilidad: Langfuse conectado y listo para trazar.")
 else:
-    print("❌ Advertencia: Error de conexión con Langfuse. Revisa tu .env")
+    print("[ERROR] Advertencia: Error de conexion con Langfuse. Revisa tu .env")
 
 if os.getenv("OPENWEATHER_API_KEY"):
-    print("✅ Clima: API Key de OpenWeather detectada.")
+    print("[OK] Clima: API Key de OpenWeather detectada.")
 else:
-    print("⚠️ Advertencia: Falta OPENWEATHER_API_KEY en el .env")
+    print("[AVISO] Advertencia: Falta OPENWEATHER_API_KEY en el .env")
